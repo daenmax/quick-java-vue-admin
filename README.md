@@ -20,4 +20,4 @@
 
 ### 前端仓库
 
-https://gitee.com/daenmax/quick-java-vue-admin-ui
+[JavaVue后台敏捷开发框架-UI](https://gitee.com/daenmax/quick-java-vue-admin-ui)
