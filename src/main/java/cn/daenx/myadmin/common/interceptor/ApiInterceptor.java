@@ -11,6 +11,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 public class ApiInterceptor implements HandlerInterceptor {
     private LoginInfoCache loginInfoCache;
     private ConfigCache configCache;
@@ -33,17 +35,17 @@ public class ApiInterceptor implements HandlerInterceptor {
         if (requestURI.contains("/system/config")) {
             throw new MyException("该接口禁止通过API调用");
         }
-        SystemConfig config = configCache.getConfig();
-        if (config.getManagerApiLock().equals("1")) {
+        Map<String, String> configMap = configCache.getConfig();
+        if (configMap.get("manager_api_lock").equals("1")) {
             throw new MyException("管理员未开启后台管理API接口");
         }
-        if (ObjectUtil.isEmpty(config.getManagerApiKey())) {
+        if (ObjectUtil.isEmpty(configMap.get("manager_api_key"))) {
             return true;
         }
         if (ObjectUtil.isEmpty(apikey)) {
             throw new MyException("请在Header中设置Apikey参数");
         }
-        if (!apikey.equals(config.getManagerApiKey())) {
+        if (!apikey.equals(configMap.get("manager_api_key"))) {
             throw new MyException("Apikey错误");
         }
         return true;

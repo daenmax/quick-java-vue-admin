@@ -2,13 +2,12 @@ package cn.daenx.myadmin.system.controller;
 
 
 import cn.daenx.myadmin.common.vo.Result;
-import cn.daenx.myadmin.system.domain.po.SystemConfig;
-import cn.daenx.myadmin.system.domain.vo.SystemConfigUpdVo;
 import cn.daenx.myadmin.system.service.SystemConfigService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 /**
@@ -29,19 +28,19 @@ public class SystemConfigController {
      */
     @GetMapping(value = "/query")
     public Result query() {
-        SystemConfig systemConfig = systemConfigService.getInfo();
-        return Result.ok(systemConfig);
+        Map<String, String> map = systemConfigService.getInfo();
+        return Result.ok(map);
     }
 
     /**
      * 修改
      *
-     * @param vo
+     * @param map
      * @return
      */
     @PostMapping("/edit")
-    public Result edit(@Validated @RequestBody SystemConfigUpdVo vo) {
-        systemConfigService.editInfo(vo);
+    public Result edit(@RequestBody Map<String, String> map) {
+        systemConfigService.editInfo(map);
         return Result.ok();
     }
 

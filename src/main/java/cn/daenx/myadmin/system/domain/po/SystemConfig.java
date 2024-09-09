@@ -26,21 +26,21 @@ public class SystemConfig extends BaseEntity implements Serializable {
     private String id;
 
     /**
-     * 后台管理API开关，0=开启，1=关闭
+     * 参数名
      */
-    @TableField(value = "manager_api_lock")
-    private String managerApiLock;
+    @TableField(value = "config_key")
+    private String configKey;
 
     /**
-     * 后台管理API秘钥
+     * 参数值
      */
-    @TableField(value = "manager_api_key")
-    private String managerApiKey;
+    @TableField(value = "config_value")
+    private String configValue;
 
     /**
-     * 后端API地址
+     * 备注
      */
-    @TableField(value = "back_api_url")
-    private String backApiUrl;
+    @TableField(value = "remark")
+    private String remark;
 
 }

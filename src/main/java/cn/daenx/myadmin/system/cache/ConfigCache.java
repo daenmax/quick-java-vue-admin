@@ -1,18 +1,19 @@
 package cn.daenx.myadmin.system.cache;
 
-import cn.daenx.myadmin.system.domain.po.SystemConfig;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 
 @Component
 public class ConfigCache {
-    private SystemConfig config;
+    private Map<String, String> map;
 
-    public SystemConfig getConfig() {
-        return config;
+    public Map<String, String> getConfig() {
+        return map;
     }
 
-    public void setConfig(SystemConfig config) {
-        this.config = config;
+    public void setConfig(Map<String, String> map) {
+        this.map = map;
     }
 }

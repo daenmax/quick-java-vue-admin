@@ -1,23 +1,24 @@
 package cn.daenx.myadmin.system.service;
 
 import cn.daenx.myadmin.system.domain.po.SystemConfig;
-import cn.daenx.myadmin.system.domain.vo.SystemConfigUpdVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.Map;
 
 public interface SystemConfigService extends IService<SystemConfig> {
     /**
-     * 邮箱配置-查询
+     * 查询
      *
      * @return
      */
-    SystemConfig getInfo();
+    Map<String, String> getInfo();
 
     /**
-     * 邮箱配置-查询-从内存中
+     * 查询-从内存中
      *
      * @return
      */
-    SystemConfig getInfoFromCache();
+    Map<String, String> getInfoFromCache();
 
     /**
      * 刷新缓存
@@ -25,9 +26,9 @@ public interface SystemConfigService extends IService<SystemConfig> {
     void initCache();
 
     /**
-     * 邮箱配置-修改
+     * 修改
      *
-     * @param vo
+     * @param map
      */
-    void editInfo(SystemConfigUpdVo vo);
+    void editInfo(Map<String, String> map);
 }

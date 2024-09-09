@@ -1,3 +1,5 @@
+
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
@@ -45,15 +47,17 @@ CREATE TABLE `system_config`  (
   `create_time` datetime(0) NULL DEFAULT NULL,
   `update_time` datetime(0) NULL DEFAULT NULL,
   `is_delete` int(0) NULL DEFAULT 0,
-  `manager_api_lock` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '后台管理API开关，0=开启，1=关闭',
-  `manager_api_key` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '后台管理API秘钥',
-  `back_api_url` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '后端API地址',
+  `config_key` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '参数名',
+  `config_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL COMMENT '参数值',
+  `remark` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '系统配置' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of system_config
 -- ----------------------------
-INSERT INTO `system_config` VALUES ('1', '2024-04-01 19:31:18', '2024-07-18 21:31:15', 0, '0', '111', 'https://43.249.193.55:34046/email');
+INSERT INTO `system_config` VALUES ('1', '2024-04-01 19:31:18', '2024-09-09 15:32:48', 0, 'back_api_url', '', '后端API地址');
+INSERT INTO `system_config` VALUES ('2', '2024-04-01 19:31:18', '2024-09-09 15:32:48', 0, 'manager_api_lock', '1', '后台管理API开关，0=开启，1=关闭');
+INSERT INTO `system_config` VALUES ('3', '2024-04-01 19:31:18', '2024-09-09 15:32:48', 0, 'manager_api_key', '123123', '后台管理API秘钥');
 
 SET FOREIGN_KEY_CHECKS = 1;
