@@ -1,0 +1,120 @@
+server:
+  port: 8018
+  servlet:
+    context-path: /quick
+
+# 日志
+logging:
+  level:
+    cn.daenx.myadmin: info
+    org.springframework: warn
+  config: classpath:logback.xml
+
+
+#mybatis plus 设置
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: cn.daenx.myadmin.*.po
+  global-config:
+    # 关闭MP3.0自带的banner
+    banner: false
+    db-config:
+      # 主键类型
+      # AUTO = 数据库ID自增
+      # NONE = 该类型为未设置主键类型
+      # INPUT = 用户输入ID
+      # ASSIGN_ID = 全局唯一ID (数字类型唯一ID)
+      # ASSIGN_UUID = 全局唯一ID (UUID)
+      id-type: ASSIGN_UUID
+      # 默认数据库表下划线命名
+      table-underline: true
+  configuration:
+    #使用驼峰原模原样对应
+    map-underscore-to-camel-case: true
+    # 返回类型为Map,显示null对应的字段
+    call-setters-on-nulls: true
+    # 开启sql打印，在开发或测试的时候可以用
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 关闭ql打印
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+spring:
+  application:
+    name: QuickJavaVueAdminServer
+  servlet:
+    # 上传文件或者请求包体最大大小设置
+    multipart:
+      # 单个文件的最大大小
+      max-file-size: 10MB
+      # 请求包体总数据的大小
+      max-request-size: 20MB
+
+  # 数据库配置
+  datasource:
+    druid:
+      # 基础监控配置
+      web-stat-filter:
+        enabled: false
+        url-pattern: /*
+        #设置不统计哪些URL
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+        session-stat-enable: true
+        session-stat-max-count: 100
+      # 监控页面
+      stat-view-servlet:
+        # 是否启用
+        enabled: true
+        # 访问地址规则
+        url-pattern: /druid/*
+        # 是否允许清空统计数据
+        reset-enable: true
+        # 设置监控页面的登录名和密码
+        login-username: myadmin
+        login-password: myadmin
+        # 授权允许访问的IP列表，多个用,隔开 (没有配置或者为空，则允许所有访问)
+        # allow: 127.0.0.1
+        # 禁止访问的IP列表，(deny优先于allow)
+        # deny: 192.168.1.100
+    dynamic:
+      druid:
+        # 初始化连接个数
+        initial-size: 5
+        # 最小连接池数量
+        min-idle: 5
+        # 最大连接池数量
+        max-active: 20
+        # 获取连接时最大等待时间，单位毫秒
+        max-wait: 30000
+        # 配置多久进行一次检测，检测需要关闭的空闲连接 单位毫秒
+        time-between-eviction-runs-millis: 60000
+        # 配置连接在池中的最小生存时间
+        min-evictable-idle-time-millis: 30000
+        # 配置连接在池中的最大生存时间
+        max-evictable-idle-time-millis: 30000
+        # 是否验证连接的有效性
+        test-while-idle: true
+        # 验证连接有效性的SQL语句
+        validation-query: SELECT 1
+        # 获取连接时候验证，会影响性能
+        test-on-borrow: true
+        # 在连接归还到连接池时是否测试该连接
+        test-on-return: false
+      # 默认使用下面哪个数据库（不加@DS注释的地方，就是使用这里配置的默认数据库）
+      primary: db-mysql
+      datasource:
+        # mysql数据库
+        db-mysql:
+          url: jdbc:mysql://rm-2ze631pi758b4666mbo.mysql.rds.aliyuncs.com/quick_test?useUnicode=true&characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai
+          username: quick_test
+          password: quick_test@2024
+          # mysql5及以下需要使用com.mysql.jdbc.Driver
+          # mysql8及以上需要使用com.mysql.cj.jdbc.Driver
+          driverClassName: com.mysql.cj.jdbc.Driver
+          type: com.alibaba.druid.pool.DruidDataSource
+
+# 系统设置
+system:
+  # 管理后台账号密码，一行一个，格式为：账号: 密码
+  userList:
+    admin: "123456"
+    test: "123456"
