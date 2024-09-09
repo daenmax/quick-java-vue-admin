@@ -23,19 +23,9 @@ CREATE TABLE `demo_people`  (
 -- ----------------------------
 -- Records of demo_people
 -- ----------------------------
-INSERT INTO `demo_people` VALUES ('1', '2024-04-22 21:25:25', '2024-04-23 21:28:49', 1, NULL, 'daeny.cn', 'pop.daeny.cn', '0', NULL);
-INSERT INTO `demo_people` VALUES ('2', '2024-04-22 21:26:45', '2024-04-22 21:26:47', 1, NULL, '163.com', 'pop.163.com', '0', NULL);
 INSERT INTO `demo_people` VALUES ('274f9dabe36c995b249a91678e0a7723', '2024-09-08 19:51:05', '2024-09-08 19:51:05', 0, NULL, '李四2', NULL, '0', NULL);
-INSERT INTO `demo_people` VALUES ('2b75cbad466dbc90c049a463d6867413', '2024-08-01 18:46:40', '2024-08-01 18:46:40', 1, NULL, 'dfjfeuylys.com', 'mail.dfjfeuylys.com', '0', NULL);
 INSERT INTO `demo_people` VALUES ('2c6fe7356233695519af7f2681516aaf', '2024-09-08 19:46:58', '2024-09-08 19:46:58', 0, '济南的', '张三', '18', '0', '2024-09-08 19:45:37');
-INSERT INTO `demo_people` VALUES ('4', '2024-04-26 22:03:04', '2024-04-26 22:03:04', 1, '微软', 'outlook.com', 'outlook.office365.com', '1', NULL);
-INSERT INTO `demo_people` VALUES ('5', '2024-06-19 19:52:18', '2024-06-19 19:52:18', 1, NULL, '126.com', 'pop.126.com', '0', NULL);
-INSERT INTO `demo_people` VALUES ('6', '2024-05-14 19:58:16', '2024-05-14 19:58:16', 1, NULL, 'gmail.com', 'pop.gmail.com', '1', NULL);
-INSERT INTO `demo_people` VALUES ('635610f9150a9dcd630a51a714c3f2a7', '2024-07-18 20:21:28', '2024-07-18 20:21:28', 1, NULL, 'op.pl', 'pop3.poczta.onet.pl', '1', NULL);
 INSERT INTO `demo_people` VALUES ('64f25be2a305697d609f5021b9f74089', '2024-09-08 19:51:05', '2024-09-08 19:51:05', 0, '济南的', '张三1', NULL, '1', '2024-09-09 19:45:37');
-INSERT INTO `demo_people` VALUES ('7', '2024-04-26 22:03:42', '2024-04-26 22:03:42', 1, 'hotmail', 'hotmail.com', 'outlook.office365.com', '1', NULL);
-INSERT INTO `demo_people` VALUES ('8', '2024-04-26 22:04:07', '2024-04-26 22:04:07', 1, NULL, 'outlook.jp', 'pop.outlook.com', '1', NULL);
-INSERT INTO `demo_people` VALUES ('d2d68f3054c60365374aec0f18ce597d', '2024-07-18 20:55:04', '2024-07-18 20:55:04', 1, NULL, 'gmx.com', 'pop.gmx.com', '1', NULL);
 INSERT INTO `demo_people` VALUES ('eea92734fc31166ec5adef8224f75dd8', '2024-09-08 19:47:46', '2024-09-08 19:47:46', 0, NULL, '李四', NULL, '0', NULL);
 
 -- ----------------------------
