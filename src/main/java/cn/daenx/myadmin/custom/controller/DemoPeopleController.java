@@ -27,7 +27,7 @@ import java.util.Map;
  * 测试人员
  */
 @RestController
-@RequestMapping("/demo/people")
+@RequestMapping("/custom/demoPeople")
 @Slf4j
 public class DemoPeopleController {
     @Resource

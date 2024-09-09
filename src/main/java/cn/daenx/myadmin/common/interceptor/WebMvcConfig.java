@@ -18,7 +18,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new ApiInterceptor(loginInfoCache, configCache))
-                .addPathPatterns("/demo/**")
+                .addPathPatterns("/custom/**")
                 .addPathPatterns("/system/**")
                 .addPathPatterns("/base/getInfo")
                 .excludePathPatterns("/base/login", "/base/logout", "/open");
