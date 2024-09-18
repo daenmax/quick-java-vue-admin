@@ -17,6 +17,7 @@
 
 1. 在`cn.daenx.myadmin.common.data.DictData`中修改字典信息
 2. 在`cn.daenx.myadmin.common.data.MenuData`中修改菜单信息
+3. 在`配置文件中`中修改账号密码信息
 
 ### 前端仓库
 
