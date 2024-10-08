@@ -37,7 +37,7 @@ public class CommonController {
      */
     @GetMapping(value = "/dict/{dictCode}")
     public Result dictType(@PathVariable String dictCode) {
-        List<DictDetailVo> data = dictData.getData(dictCode);
+        List<DictDetailVo> data = dictData.getDetailListByCode(dictCode);
         return Result.ok(data);
     }
 

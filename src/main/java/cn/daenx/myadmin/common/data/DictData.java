@@ -12,8 +12,48 @@ import java.util.Map;
 public class DictData {
     private Map<String, List<DictDetailVo>> data;
 
-    public List<DictDetailVo> getData(String dictCode) {
+    /**
+     * 根据字典编码查询字典详细信息
+     *
+     * @param dictCode
+     * @return
+     */
+    public List<DictDetailVo> getDetailListByCode(String dictCode) {
         return this.data.get(dictCode);
+    }
+
+    /**
+     * 根据字典编码和值查询字典指定详细信息
+     *
+     * @param dictCode
+     * @param value
+     * @return
+     */
+    public DictDetailVo getDetailByCodeAndValue(String dictCode, String value) {
+        List<DictDetailVo> list = this.data.get(dictCode);
+        for (DictDetailVo item : list) {
+            if (item.getValue().equals(value)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 根据字典编码和标签查询字典指定详细信息
+     *
+     * @param dictCode
+     * @param label
+     * @return
+     */
+    public DictDetailVo getDetailByCodeAndLabel(String dictCode, String label) {
+        List<DictDetailVo> list = this.data.get(dictCode);
+        for (DictDetailVo item : list) {
+            if (item.getLabel().equals(label)) {
+                return item;
+            }
+        }
+        return null;
     }
 
     public DictData() {
@@ -25,7 +65,7 @@ public class DictData {
         DemoPeopleSex();
     }
 
-    public void CommonYesNo() {
+    private void CommonYesNo() {
         //通用是否：0=否，1=是
         String dictCode = "dict_common_yes_no";
         List<DictDetailVo> list = new ArrayList<>();
@@ -33,7 +73,7 @@ public class DictData {
         list.add(new DictDetailVo(dictCode, "是", "1", DictClassConstant.PRIMARY, "1"));
         this.data.put(dictCode, list);
     }
-    public void CommonStatus() {
+    private void CommonStatus() {
         //状态，0=正常，1=禁用
         String dictCode = "dict_common_status";
         List<DictDetailVo> list = new ArrayList<>();
@@ -41,7 +81,7 @@ public class DictData {
         list.add(new DictDetailVo(dictCode, "禁用", "1", DictClassConstant.DANGER, "1"));
         this.data.put(dictCode, list);
     }
-    public void CommonLock() {
+    private void CommonLock() {
         //开关，0=开启，1=关闭
         String dictCode = "dict_common_lock";
         List<DictDetailVo> list = new ArrayList<>();
@@ -50,7 +90,7 @@ public class DictData {
         this.data.put(dictCode, list);
     }
 
-    public void CommonNeed() {
+    private void CommonNeed() {
         //需要， 0=需要, 1=不需要
         String dictCode = "dict_common_need";
         List<DictDetailVo> list = new ArrayList<>();
@@ -58,7 +98,7 @@ public class DictData {
         list.add(new DictDetailVo(dictCode, "不需要", "1", DictClassConstant.DANGER, "1"));
         this.data.put(dictCode, list);
     }
-    public void DemoPeopleSex() {
+    private void DemoPeopleSex() {
         //性别：1=男，0=女
         String dictCode = "dict_demo_people_sex";
         List<DictDetailVo> list = new ArrayList<>();
