@@ -23,6 +23,7 @@
         <mybatis.dynamic.datasource.version>4.3.0</mybatis.dynamic.datasource.version>
         <hutool.version>5.8.27</hutool.version>
         <easyexcel.version>3.3.4</easyexcel.version>
+        <bouncycastle.version>1.78.1</bouncycastle.version>
     </properties>
     <dependencies>
         <dependency>
@@ -99,6 +100,12 @@
             <groupId>com.alibaba</groupId>
             <artifactId>easyexcel</artifactId>
             <version>${easyexcel.version}</version>
+        </dependency>
+        <!-- 加密包引入 -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15to18</artifactId>
+            <version>${bouncycastle.version}</version>
         </dependency>
 
 

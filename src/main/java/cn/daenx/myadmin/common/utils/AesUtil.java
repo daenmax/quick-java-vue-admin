@@ -1,49 +1,82 @@
 package cn.daenx.myadmin.common.utils;
 
 import cn.hutool.core.codec.Base64;
-import cn.hutool.crypto.Mode;
-import cn.hutool.crypto.Padding;
+import cn.hutool.core.util.HexUtil;
+import cn.hutool.crypto.SecureUtil;
 import cn.hutool.crypto.symmetric.AES;
 
+/**
+ * AES加解密工具类
+ *
+ * @author DaenMax
+ */
 public class AesUtil {
-    /**
-     * 16字节
-     */
-    private static String AES_KEY = "aaaa9be5p71e960c1524522f000bc1d7";
 
+    /**
+     * ECB模式每次它需要一个固定长度为128位的密钥，生成固定密文。
+     * CBC模式既需要一个固定长度为256位的密钥，又需要一个随机数作为IV参数，这样对于同一份明文，每次生成的密文都不同。
+     * 在线测试：https://the-x.cn/cryptography/Aes.aspx
+     * <p>
+     * 由于用到了pkcs7填充，所以需要添加依赖
+     * <dependency>
+     * <groupId>org.bouncycastle</groupId>
+     * <artifactId>bcprov-jdk15to18</artifactId>
+     * <version>1.78.1</version>
+     * </dependency>
+     *
+     * @param args
+     */
 
     public static void main(String[] args) {
-        String content = "12345678";
-        String encrypt = encrypt(content);
-        System.out.println(encrypt);
-        System.out.println(decrypt(encrypt));
+        String key = genkey();
+        System.out.println(key);
+        String enc = encrypt("你好啊", key, true);
+        System.out.println(enc);
+        String dec = decrypt(enc, key);
+        System.out.println(dec);
 
-//        String t = System.currentTimeMillis() /1000+"";
-//        System.out.println(t);
     }
 
-    public static String encrypt(String content) {
-        AES aes = new AES(Mode.CBC, Padding.PKCS5Padding, AES_KEY.getBytes(), AES_KEY.substring(0, 16).getBytes());
-        byte[] encrypt = aes.encrypt(content.getBytes());
-        String encode = Base64.encode(encrypt);
-        return encode;
+    /**
+     * 创建一个秘钥
+     * 256bits，即32个字符
+     *
+     * @return
+     */
+    public static String genkey() {
+        byte[] key = SecureUtil.generateKey("AES/CBC/PKCS7Padding").getEncoded();
+        return HexUtil.encodeHexStr(key);
     }
 
-    public static String decrypt(String content) {
-        AES aes = new AES(Mode.CBC, Padding.PKCS5Padding, AES_KEY.getBytes(), AES_KEY.substring(0, 16).getBytes());
-        String decrypt = aes.decryptStr(Base64.decode(content));
-        return decrypt;
+    /**
+     * 加密
+     * AES/CBC/PKCS7Padding
+     * IV是秘钥前16位
+     *
+     * @param content
+     * @param key
+     * @param isBase64 是否输出base64格式，否则输出16进制
+     * @return
+     */
+    public static String encrypt(String content, String key, Boolean isBase64) {
+        AES aes = new AES("CBC", "PKCS7Padding", key.getBytes(), key.substring(0, 16).getBytes());
+        if (isBase64) {
+            return aes.encryptBase64(content);
+        }
+        return aes.encryptHex(content);
     }
 
-    public static String encrypt(String content, String key) {
-        AES aes = new AES(Mode.CBC, Padding.PKCS5Padding, key.getBytes(), key.substring(0, 16).getBytes());
-        byte[] encrypt = aes.encrypt(content.getBytes());
-        String encode = Base64.encode(encrypt);
-        return encode;
-    }
-
+    /**
+     * 解密
+     * AES/CBC/PKCS7Padding
+     * IV是秘钥前16位
+     *
+     * @param content 支持base64格式、16进制
+     * @param key
+     * @return
+     */
     public static String decrypt(String content, String key) {
-        AES aes = new AES(Mode.CBC, Padding.PKCS5Padding, key.getBytes(), key.substring(0, 16).getBytes());
+        AES aes = new AES("CBC", "PKCS7Padding", key.getBytes(), key.substring(0, 16).getBytes());
         String decrypt = aes.decryptStr(Base64.decode(content));
         return decrypt;
     }
