@@ -1,4 +1,7 @@
-package cn.daenx.myadmin.common.vo;
+package cn.daenx.myadmin.common.utils;
+
+import cn.daenx.myadmin.common.vo.MyMenuVo;
+import cn.daenx.myadmin.common.vo.RouterVo;
 
 import java.util.ArrayList;
 import java.util.Arrays;

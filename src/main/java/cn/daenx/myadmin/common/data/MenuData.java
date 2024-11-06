@@ -1,12 +1,11 @@
 package cn.daenx.myadmin.common.data;
 
-import cn.daenx.myadmin.common.vo.MyMenuUtil;
+import cn.daenx.myadmin.common.utils.MyMenuUtil;
 import cn.daenx.myadmin.common.vo.MyMenuVo;
 import cn.daenx.myadmin.common.vo.RouterVo;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Component
