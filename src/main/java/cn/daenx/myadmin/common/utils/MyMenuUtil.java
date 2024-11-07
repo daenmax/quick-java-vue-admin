@@ -2,6 +2,7 @@ package cn.daenx.myadmin.common.utils;
 
 import cn.daenx.myadmin.common.vo.MyMenuVo;
 import cn.daenx.myadmin.common.vo.RouterVo;
+import cn.hutool.core.collection.CollUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -104,6 +105,9 @@ public class MyMenuUtil {
                 retVo.setMeta(new RouterVo.MetaVo(myMenuVo.getName(), myMenuVo.getIcon(), false, null));
                 List<RouterVo> routerVos = handleSub(myMenuVo.getChildren());
                 retVo.setChildren(routerVos);
+                if (CollUtil.isNotEmpty(routerVos)) {
+                    retVo.setAlwaysShow(true);
+                }
                 retList.add(retVo);
             } else if ("1".equals(myMenuVo.getType())) {
                 //菜单
