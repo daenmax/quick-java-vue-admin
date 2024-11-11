@@ -70,6 +70,9 @@ public class MyMenuUtil {
             vo.setMeta(new RouterVo.MetaVo(myMenuVo.getName(), myMenuVo.getIcon(), false, null));
             List<RouterVo> routerVos = handleSub(myMenuVo.getChildren());
             vo.setChildren(routerVos);
+            if (CollUtil.isNotEmpty(routerVos)) {
+                vo.setAlwaysShow(true);
+            }
         } else if ("1".equals(myMenuVo.getType())) {
             //菜单
             vo.setComponent("Layout");
