@@ -1,4 +1,4 @@
-package cn.daenx.myadmin.framework.dictMasked.annotation;
+package cn.daenx.myadmin.framework.annotation;
 
 public enum MaskedType {
     NAME(0),

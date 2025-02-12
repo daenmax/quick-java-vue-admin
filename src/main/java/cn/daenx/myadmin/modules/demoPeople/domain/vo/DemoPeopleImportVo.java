@@ -1,6 +1,6 @@
 package cn.daenx.myadmin.modules.demoPeople.domain.vo;
 
-import cn.daenx.myadmin.framework.dictMasked.annotation.Dict;
+import cn.daenx.myadmin.framework.annotation.Dict;
 import cn.daenx.myadmin.framework.excel.ExcelConverter;
 import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
 import com.alibaba.excel.annotation.ExcelProperty;
