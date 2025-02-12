@@ -6,7 +6,7 @@ server:
 # 日志
 logging:
   level:
-    cn.daenx.myadmin: info
+    cn.daenx.myadmin: warn
     org.springframework: warn
   config: classpath:logback.xml
 
@@ -86,9 +86,9 @@ spring:
 mybatis-plus:
   configuration:
     # 开启sql打印，在开发或测试的时候可以用
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     # 关闭ql打印
-    # log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+     log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
 
 
 # 系统设置
