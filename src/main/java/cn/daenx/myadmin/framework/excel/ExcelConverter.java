@@ -6,6 +6,7 @@ import cn.daenx.myadmin.framework.common.vo.DictDetailVo;
 import cn.daenx.myadmin.framework.annotation.Dict;
 import cn.daenx.myadmin.framework.annotation.DictDetail;
 import cn.daenx.myadmin.framework.annotation.Masked;
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.excel.converters.Converter;
@@ -98,9 +99,11 @@ public class ExcelConverter implements Converter<Object> {
         if (StringUtils.isNotBlank(annotation.dictCode())) {
             //根据系统字典翻译
             List<DictDetailVo> list = DictData.getDetailListByCode(annotation.dictCode());
-            for (DictDetailVo detailVo : list) {
-                if (detailVo.getValue().equals(value)) {
-                    return detailVo.getLabel();
+            if (CollUtil.isEmpty(list)) {
+                for (DictDetailVo detailVo : list) {
+                    if (detailVo.getValue().equals(value)) {
+                        return detailVo.getLabel();
+                    }
                 }
             }
         } else {
@@ -126,9 +129,11 @@ public class ExcelConverter implements Converter<Object> {
         if (StringUtils.isNotBlank(annotation.dictCode())) {
             //根据系统字典翻译
             List<DictDetailVo> list = DictData.getDetailListByCode(annotation.dictCode());
-            for (DictDetailVo detailVo : list) {
-                if (detailVo.getLabel().equals(label)) {
-                    return detailVo.getValue();
+            if (CollUtil.isEmpty(list)) {
+                for (DictDetailVo detailVo : list) {
+                    if (detailVo.getLabel().equals(label)) {
+                        return detailVo.getValue();
+                    }
                 }
             }
         } else {
